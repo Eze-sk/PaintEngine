@@ -1,7 +1,7 @@
-import Header from "./components/Header";
+import Header from "@components/layout/Header";
 import MenuBar from "./components/MenuBar";
 import ToolBox from "./components/ToolBox";
-import Footer from "./components/Footer";
+import Footer from "@components/layout/Footer";
 import MainSection from "./components/MainSection";
 import { useStart } from "@hooks/useStart";
 
@@ -15,7 +15,7 @@ export default function EditorPage() {
   return (
     <div className="h-screen grid grid-rows-[auto_1fr]">
       <div>
-        <Header />
+        <Header hasTabs hasUserProfile />
         <MenuBar />
       </div>
       <main className="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto]">
