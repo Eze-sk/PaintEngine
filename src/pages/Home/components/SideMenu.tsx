@@ -1,83 +1,96 @@
 import { CardWrapper } from "@components/layout/CardWrapper";
+import Icon from "@components/ui/Icon";
 
 interface TypeContent {
-	label: string;
-	indexUnderline: number;
+  label: string;
+  indexUnderline: number;
+  icon: string;
 }
 
 const NAVIGATION_CONTENT: TypeContent[][] = [
-	[
-		{
-			label: "New",
-			indexUnderline: 0,
-		},
-		{
-			label: "Community",
-			indexUnderline: 0,
-		},
-		{
-			label: "Documentation",
-			indexUnderline: 0,
-		},
-	],
-	[
-		{
-			label: "GitHub",
-			indexUnderline: 0,
-		},
-		{
-			label: "Ezesk.dev",
-			indexUnderline: 0,
-		},
-	],
-	[
-		{
-			label: "Preferences",
-			indexUnderline: 0,
-		},
-	],
+  [
+    {
+      label: "New",
+      indexUnderline: 0,
+      icon: "stackedDocuments",
+    },
+    {
+      label: "Community",
+      indexUnderline: 0,
+      icon: "userGroup",
+    },
+    {
+      label: "Documentation",
+      indexUnderline: 0,
+      icon: "folderFiles",
+    },
+  ],
+  [
+    {
+      label: "GitHub",
+      indexUnderline: 0,
+      icon: "controlPanel",
+    },
+    {
+      label: "Ezesk.dev",
+      indexUnderline: 0,
+      icon: "controlPanel",
+    },
+  ],
+  [
+    {
+      label: "Preferences",
+      indexUnderline: 0,
+      icon: "gear",
+    },
+  ],
 ];
 
 export default function SideMenu() {
-	return (
-		<CardWrapper
-			variant="cream"
-			gradientStyle="square"
-			className="h-full w-50 p-2 flex flex-col"
-			tag="nav"
-		>
-			{NAVIGATION_CONTENT.map((it, index) => {
-				const isLast = NAVIGATION_CONTENT.length - 1 !== index;
+  return (
+    <CardWrapper
+      variant="cream"
+      shadingStyle="square"
+      className="h-full w-50 p-2 flex flex-col"
+      tag="nav"
+    >
+      {NAVIGATION_CONTENT.map((it, index) => {
+        const isLast = NAVIGATION_CONTENT.length - 1 !== index;
+        const setBorder = isLast ? "border-shaded-bottom" : "";
 
-				const setBorder = isLast ? "border-shaded-bottom" : "";
+        const uniqueKey = `group-${index}`;
 
-				return (
-					<ul
-						className={`${setBorder} flex flex-col gap-4 py-4`}
-						key={it.label}
-					>
-						{it.map((it) => {
-							const label = it.label;
-							const index = it.indexUnderline;
+        return (
+          <ul
+            className={`${setBorder} flex flex-col gap-4 py-4`}
+            key={uniqueKey}
+          >
+            {it.map((it) => {
+              const label = it.label;
+              const index = it.indexUnderline;
 
-							const previousLetters = label.substring(0, index);
-							const underlinedLetter = label.charAt(index);
-							const letterAfter = label.substring(index + 1);
+              const previousLetters = label.substring(0, index);
+              const underlinedLetter = label.charAt(index);
+              const letterAfter = label.substring(index + 1);
 
-							return (
-								<li key={label} className="flex gap-2 py-1 items-center">
-									<div className="w-13 h-13 rounded bg-gray-300 border border-gray-500" />
-									<span className="truncate">
-										{previousLetters}
-										<span className="underline">{underlinedLetter}</span>
-										{letterAfter}
-									</span>
-								</li>
-							);
-						})}
-					</ul>
-				);
-			})}
-		</CardWrapper>
-	);
+              return (
+                <li key={label} className="flex gap-3 py-1 items-center">
+                  <Icon
+                    group="home"
+                    size={35}
+                    name={it.icon ?? "controlPanel"}
+                  />
+                  <span className="truncate">
+                    {previousLetters}
+                    <span className="underline">{underlinedLetter}</span>
+                    {letterAfter}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      })}
+    </CardWrapper>
+  );
 }
