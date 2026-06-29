@@ -180,7 +180,7 @@ export default function ContextMenu({
 						style={menuStyle}
 						onMouseEnter={handleMouseEnter}
 						onMouseLeave={handleMouseLeave}
-						gradientStyle="square"
+						shadingStyle="square"
 						tag="ul"
 						className="flex gap-1 p-2 rounded-sm"
 					>

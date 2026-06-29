@@ -1,0 +1,63 @@
+import { CardWrapper } from "@components/layout/CardWrapper";
+import Icon from "@components/ui/Icon";
+import { Reorder } from "framer-motion";
+import { useState } from "react";
+
+export default function TabContainer() {
+  const [currentTabs, setCurrentTabs] = useState([
+    {
+      tabID: "page-1",
+      title: "audio",
+      icon: "audioEditor",
+    },
+    {
+      tabID: "page-2",
+      title: "code",
+      icon: "codeEditor",
+    },
+  ]);
+
+  const [activeTab, setActiveTab] = useState("home");
+
+  const handleActiveTab = (tabID: string) => {
+    setActiveTab(tabID);
+  };
+
+  return (
+    <div className="max-w-[90%] w-full overflow-hidden">
+      <Reorder.Group
+        axis="x"
+        values={currentTabs}
+        onReorder={setCurrentTabs}
+        className="flex gap-2 p-2"
+      >
+        {currentTabs.map((tb) => {
+          const isActive = activeTab === tb.tabID;
+
+          return (
+            <Reorder.Item
+              key={tb.tabID}
+              value={tb}
+              className="cursor-pointer"
+              onClick={() => handleActiveTab(tb.tabID)}
+              dragConstraints={{ top: 0, bottom: 0 }}
+            >
+              <CardWrapper
+                className="rounded px-2 py-1 flex items-center gap-1.25 min-w-40"
+                variant="glass"
+                shadingStyle={isActive ? "active" : "linear"}
+                shadingSize="small"
+                tag="div"
+              >
+                <Icon group="tab" size={18} name={tb.icon ?? "audioEditor"} />
+                <span className="text-white text-sm font-light">
+                  {tb.title}
+                </span>
+              </CardWrapper>
+            </Reorder.Item>
+          );
+        })}
+      </Reorder.Group>
+    </div>
+  );
+}

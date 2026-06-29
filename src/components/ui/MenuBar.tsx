@@ -68,13 +68,13 @@ export default function MenuBar() {
   return (
     <CardWrapper
       variant="cream"
-      gradientStyle="linear"
+      shadingStyle="linear"
       className="w-full px-2 py-2 flex items-center gap-4"
       tag="nav"
     >
-      {Menus.map((it, index) => (
+      {Menus.map((it) => (
         <ContextMenu
-          key={`${index}-${it.title}`}
+          key={`${it.title}`}
           list={it.list}
           position="respectFather"
           activationEvent="leftClick"
