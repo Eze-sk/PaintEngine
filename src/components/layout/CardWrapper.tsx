@@ -1,18 +1,7 @@
 import React from "react";
+import type { AllowedTags } from "@/types/AllowedTagst";
 
-type AllowedTags =
-  | "section"
-  | "div"
-  | "article"
-  | "main"
-  | "header"
-  | "footer"
-  | "li"
-  | "ul"
-  | "nav"
-  | "button";
-
-type TypeVariant = "blue" | "cream" | "green" | "glass";
+type TypeVariant = "blue" | "cream" | "green" | "red" | "glass";
 type ShadingStyle = "linear" | "square" | "active";
 
 type TypesProps<T extends AllowedTags> = {
@@ -22,6 +11,7 @@ type TypesProps<T extends AllowedTags> = {
   variant?: TypeVariant;
   style?: React.CSSProperties;
   tag?: T;
+  hasHover?: boolean;
   children?: React.ReactNode;
 } & Omit<React.ComponentPropsWithRef<T>, "className" | "tag" | "children">;
 
@@ -38,6 +28,10 @@ const COLORS: Record<TypeVariant, Record<string, string>> = {
     upperShading: "#8ec985",
     bg: "#54b851",
   },
+  red: {
+    upperShading: "#D9ABA5",
+    bg: "#D4552D",
+  },
   glass: {
     upperShading: "#6ba7f8FF",
     bg: "#3980f4FF",
@@ -53,6 +47,7 @@ const CardWrapperInner = <T extends AllowedTags = "div">(
     style,
     tag,
     children,
+    hasHover,
     ...props
   }: TypesProps<T>,
   ref: React.ForwardedRef<unknown>,
@@ -84,12 +79,14 @@ const CardWrapperInner = <T extends AllowedTags = "div">(
     },
   };
 
+  const getHover = hasHover && "hover:brightness-110 transition-all";
+
   const selectedVariant = variantStyles[shadingStyle ?? "linear"];
 
   return (
     <Component
       ref={ref}
-      className={className}
+      className={`${className} ${getHover}`}
       style={{
         ...selectedVariant,
         ...style,
