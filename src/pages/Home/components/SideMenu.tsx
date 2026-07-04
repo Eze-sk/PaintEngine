@@ -1,10 +1,17 @@
 import { CardWrapper } from "@components/layout/CardWrapper";
-import Icon from "@components/ui/Icon";
+import IconSheetImage from "@components/ui/IconSheetImage";
+import WindowContainer from "@components/ui/WindowManager";
 
 interface TypeContent {
   label: string;
   indexUnderline: number;
   icon: string;
+  hasWindow?: true;
+  windowData?: {
+    title: string;
+    activeQuery: string;
+    componentPath: string;
+  };
 }
 
 const NAVIGATION_CONTENT: TypeContent[][] = [
@@ -13,6 +20,12 @@ const NAVIGATION_CONTENT: TypeContent[][] = [
       label: "New",
       indexUnderline: 0,
       icon: "stackedDocuments",
+      hasWindow: true,
+      windowData: {
+        title: "New project",
+        activeQuery: "new-project",
+        componentPath: "../windowContents/StartProject",
+      },
     },
     {
       label: "Community",
@@ -67,24 +80,43 @@ export default function SideMenu() {
           >
             {it.map((it) => {
               const label = it.label;
-              const index = it.indexUnderline;
-
-              const previousLetters = label.substring(0, index);
-              const underlinedLetter = label.charAt(index);
-              const letterAfter = label.substring(index + 1);
 
               return (
                 <li key={label} className="flex gap-3 py-1 items-center">
-                  <Icon
-                    group="home"
-                    size={35}
-                    name={it.icon ?? "controlPanel"}
-                  />
-                  <span className="truncate">
-                    {previousLetters}
-                    <span className="underline">{underlinedLetter}</span>
-                    {letterAfter}
-                  </span>
+                  {it.hasWindow ? (
+                    <WindowContainer
+                      key={label}
+                      activeQuery={it.windowData?.activeQuery ?? ""}
+                    >
+                      <WindowContainer.Button className="flex gap-3 py-1 items-center">
+                        {
+                          <SetLabel
+                            label={label}
+                            setIndex={it.indexUnderline}
+                            icon={it.icon}
+                          />
+                        }
+                      </WindowContainer.Button>
+                      <WindowContainer.Manager
+                        content={() =>
+                          import(it.windowData?.componentPath ?? "")
+                        }
+                        initialFormat="floating"
+                        title={it.windowData?.title ?? ""}
+                        icon={{
+                          group: "home",
+                          name: it.icon,
+                          size: 18,
+                        }}
+                      />
+                    </WindowContainer>
+                  ) : (
+                    <SetLabel
+                      label={label}
+                      setIndex={it.indexUnderline}
+                      icon={it.icon}
+                    />
+                  )}
                 </li>
               );
             })}
@@ -92,5 +124,32 @@ export default function SideMenu() {
         );
       })}
     </CardWrapper>
+  );
+}
+
+function SetLabel({
+  label,
+  setIndex,
+  icon,
+}: {
+  label: string;
+  setIndex: number;
+  icon: string;
+}) {
+  const index = setIndex;
+
+  const previousLetters = label.substring(0, index);
+  const underlinedLetter = label.charAt(index);
+  const letterAfter = label.substring(index + 1);
+
+  return (
+    <>
+      <IconSheetImage group="home" size={35} name={icon ?? "controlPanel"} />
+      <span className="truncate">
+        {previousLetters}
+        <span className="underline">{underlinedLetter}</span>
+        {letterAfter}
+      </span>
+    </>
   );
 }
