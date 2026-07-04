@@ -1,6 +1,6 @@
 import { CardWrapper } from "@components/layout/CardWrapper";
-import Icon from "@components/ui/Icon";
-import { Reorder } from "framer-motion";
+import IconSheetImage from "@components/ui/IconSheetImage";
+import { Reorder } from "motion/react";
 import { useState } from "react";
 
 export default function TabContainer() {
@@ -48,8 +48,13 @@ export default function TabContainer() {
                 shadingStyle={isActive ? "active" : "linear"}
                 shadingSize="small"
                 tag="div"
+                hasHover
               >
-                <Icon group="tab" size={18} name={tb.icon ?? "audioEditor"} />
+                <IconSheetImage
+                  group="tab"
+                  size={18}
+                  name={tb.icon ?? "audioEditor"}
+                />
                 <span className="text-white text-sm font-light">
                   {tb.title}
                 </span>

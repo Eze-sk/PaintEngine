@@ -1,8 +1,9 @@
-import ContextMenu, { type TypeListMenu } from "./ContextMenu";
-import SvgWrapper from "@components/layout/SvgWrapper";
+import ContextMenu, { type TypeListMenu } from "@components/ui/ContextMenu";
+import IconSheetImage from "@components/ui/IconSheetImage";
+import IconSheetSVG from "@components/ui/IconSheetSVG";
 
 interface TypeProps {
-  activateFilters: boolean;
+  activateFilters?: boolean;
   menuFilter?: TypeListMenu;
 }
 
@@ -16,18 +17,23 @@ export default function SearchInput({
 
   return (
     <>
-      <div>
-        <SvgWrapper icon="search" size={14} />
-        <input type="search" />
-      </div>
+      <label className="flex gap-2 w-full border border-gray-400 items-center">
+        <IconSheetImage
+          group="general"
+          name="searchFolder"
+          width={18}
+          height={18}
+        />
+        <IconSheetImage group="tab" size={20} name="audioEditor" />
+        <input type="search" className="w-full" />
+      </label>
       {activateFilters && (
         <ContextMenu
           activationEvent="leftClick"
           position="respectFather"
           list={menuFilter}
         >
-          <SvgWrapper icon="filter" size={14} />
-          <SvgWrapper icon="drop-down" size={7} />
+          <IconSheetSVG icon="filter" size={14} />
         </ContextMenu>
       )}
     </>
