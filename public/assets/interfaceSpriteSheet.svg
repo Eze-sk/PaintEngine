@@ -11,4 +11,14 @@
       <path fill="#5c5f62" d="M19.646 20.354a.5.5 0 0 0 .708-.708zm.708-.708-5-5-.708.708 5 5z"/>
     </g>
   </symbol>
+  <symbol id="minimize" viewBox="0 0 32 32" fill="none">
+    <path fill="#fff" d="M8 20h12v4H8z" />
+  </symbol>
+  <symbol id="expand" viewBox="0 0 32 32" fill="none">
+    <path fill="none" stroke="#fff" stroke-width="2" d="M8 8h16v16H8z"/>
+    <path fill="#fff" d="M8 8h16v4H8z"/>
+  </symbol>
+  <symbol id="close" viewBox="0 0 32 32" fill="none">
+    <path stroke="#fff" stroke-linecap="round" stroke-width="3" d="m10 10 12 12m0-12L10 22"/>
+  </symbol>
 </svg>
