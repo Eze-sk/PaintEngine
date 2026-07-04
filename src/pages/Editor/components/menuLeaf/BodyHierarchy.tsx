@@ -1,3 +1,3 @@
 export default function BodyHierarchy() {
-  return <>A</>;
+	return <>A</>;
 }
