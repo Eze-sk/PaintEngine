@@ -15,7 +15,7 @@ type TypeProps = HTMLAttributes<HTMLOrSVGElement> & {
 
 export default function IconSheetSVG({ icon, size, ...props }: TypeProps) {
 	return (
-		<svg {...props} aria-hidden="true" width={size} height={size}>
+		<svg {...props} aria-hidden="true" role="img" width={size} height={size}>
 			<use href={`/assets/interfaceSpriteSheet.svg#${icon}`} />
 		</svg>
 	);

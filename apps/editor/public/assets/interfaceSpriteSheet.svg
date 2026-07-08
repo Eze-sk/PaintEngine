@@ -1,24 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="drop-down" viewBox="0 0 20 20" fill="none">
     <path fill="#5c5f62" d="M13.098 8H6.902c-.751 0-1.172.754-.708 1.268L9.292 12.7c.36.399 1.055.399 1.416 0l3.098-3.433C14.27 8.754 13.849 8 13.098 8"/>
+    <title>Expand menu</title>
   </symbol>
   <symbol id="filter" viewBox="0 0 24 24" fill="none">
     <path stroke="#5c5f62" stroke-linecap="round" stroke-linejoin="round" d="M18 5H6c-.471 0-.707 0-.854.146C5 5.293 5 5.53 5 6v1.965c0 .262 0 .393.06.503.058.11.167.184.385.329l3.024 2.015c.872.582 1.308.873 1.544 1.315.237.442.237.966.237 2.014V19l3.5-1.75v-3.11c0-1.047 0-1.571.237-2.013.236-.443.672-.733 1.544-1.315l3.024-2.015c.218-.145.327-.218.386-.329.059-.11.059-.241.059-.503V6c0-.471 0-.707-.146-.854C18.707 5 18.47 5 18 5"/>
+    <title>Filter results</title>
   </symbol>
   <symbol id="search" viewBox="0 0 24 24" fill="none">
     <g>
       <circle cx="10.5" cy="10.5" r="6.5" stroke="#5c5f62" stroke-linejoin="round"/>
       <path fill="#5c5f62" d="M19.646 20.354a.5.5 0 0 0 .708-.708zm.708-.708-5-5-.708.708 5 5z"/>
     </g>
+     <title>Search</title>
   </symbol>
   <symbol id="minimize" viewBox="0 0 32 32" fill="none">
     <path fill="#fff" d="M8 20h12v4H8z" />
+    <title>Minimize</title>
   </symbol>
   <symbol id="expand" viewBox="0 0 32 32" fill="none">
     <path fill="none" stroke="#fff" stroke-width="2" d="M8 8h16v16H8z"/>
     <path fill="#fff" d="M8 8h16v4H8z"/>
+    <title>Maximize</title>
   </symbol>
   <symbol id="close" viewBox="0 0 32 32" fill="none">
     <path stroke="#fff" stroke-linecap="round" stroke-width="3" d="m10 10 12 12m0-12L10 22"/>
+    <title>Close</title>
   </symbol>
 </svg>
