@@ -1,0 +1,17 @@
+export const projectNameList: string[] = [
+	"Potato Alpha",
+	"Mega Toaster 3000",
+	"Project Pigeon",
+	"Screaming Onion",
+	"Super Soup RPG",
+	"Angry Broccoli",
+	"Tactical Sock",
+	"Clicker Tycoon 2",
+	"Laser Chicken",
+	"Baguette Quest",
+	"Space Banana",
+	"Dino Accountant",
+	"Glitchy Cactus",
+	"Extreme Napping",
+	"Cyber Hamster",
+];
