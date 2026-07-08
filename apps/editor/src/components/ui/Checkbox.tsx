@@ -1,23 +1,27 @@
-interface TypeProps {
-  label: string;
-  labelSrOnly?: boolean;
-  labelClass?: string;
-  className?: string;
+interface TypeProps extends HTMLInputElement {
+	className?: string;
+	id: string;
+	tabindex: string;
+	label: string;
+	labelSrOnly?: boolean;
+	labelClass?: string;
 }
 
 export default function Checkbox({
-  label,
-  className,
-  labelSrOnly = false,
-  labelClass,
+	className,
+	id,
+	label,
+	labelSrOnly = false,
+	labelClass,
+	...props
 }: TypeProps) {
-  return (
-    <label className={`custom-checkbox ${className ?? ""}`}>
-      <input type="checkbox" className="sr-only" id={`check-${label}`} />
-      <span className={`${labelSrOnly ? "sr-only" : ""} ${labelClass ?? ""}`}>
-        {label}
-      </span>
-      <span className="checkbox-box" />
-    </label>
-  );
+	return (
+		<label className={`custom-checkbox ${className ?? ""}`} htmlFor={id}>
+			<input type="checkbox" className="sr-only" id={id} name={id} {...props} />
+			<span className={`${labelSrOnly ? "sr-only" : ""} ${labelClass ?? ""}`}>
+				{label}
+			</span>
+			<span className="checkbox-box" />
+		</label>
+	);
 }

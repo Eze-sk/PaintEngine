@@ -51,35 +51,35 @@ button {
 	user-select: none;
 	cursor: pointer;
 	position: relative;
-}
 
-.checkbox-box {
-	height: 20px;
-	width: 20px;
-	border: 1px solid #b7cbc9;
-	border-radius: 4px;
-	position: absolute;
-	transition: all 0.2s ease;
-}
+	.checkbox-box {
+		height: 20px;
+		width: 20px;
+		border: 1px solid #b7cbc9;
+		border-radius: 4px;
+		position: absolute;
+		transition: all 0.2s ease;
+	}
 
-.custom-checkbox:hover .checkbox-box {
-	filter: brightness(0.98);
-}
+	&:hover .checkbox-box {
+		filter: brightness(0.98);
+	}
 
-.custom-checkbox .checkbox-box::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 12px;
-	height: 12px;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M469.402 35.492C334.09 110.664 197.114 324.5 197.114 324.5L73.509 184.176 0 254.336l178.732 222.172 65.15-2.504C327.414 223.414 512 55.539 512 55.539z' fill='%23172064'/%3E%3C/svg%3E");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	opacity: 0;
-	transition: opacity 0.15s ease;
+	.checkbox-box::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 12px;
+		height: 12px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M469.402 35.492C334.09 110.664 197.114 324.5 197.114 324.5L73.509 184.176 0 254.336l178.732 222.172 65.15-2.504C327.414 223.414 512 55.539 512 55.539z' fill='%23172064'/%3E%3C/svg%3E");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
 }
 
 .custom-checkbox input:checked ~ .checkbox-box::after {
@@ -89,6 +89,16 @@ button {
 .custom-checkbox input:checked ~ .checkbox-box {
 	border-color: #9cb4cd;
 	background-color: #f4f8fb;
+}
+
+.custom-checkbox input:focus-visible ~ .checkbox-box {
+	outline: 2px solid #9cb4cd; /* Puedes usar el color que prefieras */
+	outline-offset: 2px;
+	border-color: #9cb4cd;
+}
+
+.custom-checkbox:hover .checkbox-box {
+	filter: brightness(0.95);
 }
 
 .hover-card::after {
