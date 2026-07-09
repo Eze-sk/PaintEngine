@@ -6,7 +6,7 @@ const db = new Dexie("projectData") as Dexie & {
 };
 
 db.version(1).stores({
-	projectMetadata: "id, data",
+	projectMetadata: "++id, name, slug, createAt, updatedAt",
 });
 
 export type { TypeProjectMetadata };
