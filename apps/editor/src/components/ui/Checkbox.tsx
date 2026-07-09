@@ -1,7 +1,6 @@
-interface TypeProps extends HTMLInputElement {
-	className?: string;
+interface TypeProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	id: string;
-	tabindex: string;
+	className?: string;
 	label: string;
 	labelSrOnly?: boolean;
 	labelClass?: string;
@@ -17,8 +16,17 @@ export default function Checkbox({
 }: TypeProps) {
 	return (
 		<label className={`custom-checkbox ${className ?? ""}`} htmlFor={id}>
-			<input type="checkbox" className="sr-only" id={id} name={id} {...props} />
-			<span className={`${labelSrOnly ? "sr-only" : ""} ${labelClass ?? ""}`}>
+			<input
+				{...props}
+				type="checkbox"
+				className="sr-only"
+				id={id}
+				name={id}
+			/>
+			<span
+				className={`${labelSrOnly ? "sr-only" : ""}
+				${labelClass ?? ""}`}
+			>
 				{label}
 			</span>
 			<span className="checkbox-box" />
