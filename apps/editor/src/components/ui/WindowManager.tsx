@@ -14,12 +14,12 @@ import { createPortal } from "react-dom";
 import { useSearchParams } from "react-router";
 import IconSheetSVG from "./IconSheetSVG";
 
-const ContainerContext = createContext<{
+export const ContainerContext = createContext<{
   isOpen: boolean;
   toggle: () => void;
 } | null>(null);
 
-function WindowContainer({
+function WindowManager({
   activeQuery,
   children,
 }: {
@@ -81,7 +81,7 @@ interface TypeWindowManagerProps {
   content: () => Promise<any>;
 }
 
-export function WindowManager({
+export function WindowWrapper({
   title,
   icon,
   initialFormat,
@@ -132,6 +132,7 @@ export function WindowManager({
           <div className="flex gap-2 *:rounded">
             <CardWrapper
               tag="button"
+              type="button"
               variant="glass"
               shadingStyle="square"
               hasHover
@@ -140,6 +141,7 @@ export function WindowManager({
             </CardWrapper>
             <CardWrapper
               tag="button"
+              type="button"
               variant="glass"
               shadingStyle="square"
               hasHover
@@ -148,6 +150,7 @@ export function WindowManager({
             </CardWrapper>
             <CardWrapper
               tag="button"
+              type="button"
               variant="red"
               shadingStyle="square"
               hasHover
@@ -218,7 +221,7 @@ function WindowFloating({ children }: { children?: React.ReactNode }) {
   );
 }
 
-WindowContainer.Button = ButtonOpenWindow;
-WindowContainer.Manager = WindowManager;
+WindowManager.Button = ButtonOpenWindow;
+WindowManager.Wrapper = WindowWrapper;
 
-export default WindowContainer;
+export default WindowManager;

@@ -1,6 +1,6 @@
 import { CardWrapper } from "@components/layout/CardWrapper";
 import IconSheetImage from "@components/ui/IconSheetImage";
-import WindowContainer from "@components/ui/WindowManager";
+import WindowManager from "@components/ui/WindowManager";
 
 interface TypeContent {
   label: string;
@@ -84,20 +84,18 @@ export default function SideMenu() {
               return (
                 <li key={label} className="flex gap-3 py-1 items-center">
                   {it.hasWindow ? (
-                    <WindowContainer
+                    <WindowManager
                       key={label}
                       activeQuery={it.windowData?.activeQuery ?? ""}
                     >
-                      <WindowContainer.Button className="flex gap-3 py-1 items-center">
-                        {
-                          <SetLabel
-                            label={label}
-                            setIndex={it.indexUnderline}
-                            icon={it.icon}
-                          />
-                        }
-                      </WindowContainer.Button>
-                      <WindowContainer.Manager
+                      <WindowManager.Button className="flex gap-3 py-1 items-center">
+                        <SetLabel
+                          label={label}
+                          setIndex={it.indexUnderline}
+                          icon={it.icon}
+                        />
+                      </WindowManager.Button>
+                      <WindowManager.Wrapper
                         content={() =>
                           import(it.windowData?.componentPath ?? "")
                         }
@@ -109,7 +107,7 @@ export default function SideMenu() {
                           size: 18,
                         }}
                       />
-                    </WindowContainer>
+                    </WindowManager>
                   ) : (
                     <SetLabel
                       label={label}

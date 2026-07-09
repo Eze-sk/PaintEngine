@@ -1,21 +1,12 @@
 import { CardWrapper } from "@components/layout/CardWrapper";
 import IconSheetImage from "@components/ui/IconSheetImage";
+import { useMetadataStore } from "@store/Metadata";
 import { Reorder } from "motion/react";
 import { useState } from "react";
 
 export default function TabContainer() {
-  const [currentTabs, setCurrentTabs] = useState([
-    {
-      tabID: "page-1",
-      title: "audio",
-      icon: "audioEditor",
-    },
-    {
-      tabID: "page-2",
-      title: "code",
-      icon: "codeEditor",
-    },
-  ]);
+  const currentTabs = useMetadataStore((state) => state.tabs)
+  const setCurrentTabs = useMetadataStore((state) => state.setTabs)
 
   const [activeTab, setActiveTab] = useState("home");
 
